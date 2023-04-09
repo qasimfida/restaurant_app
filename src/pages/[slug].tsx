@@ -4,12 +4,13 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { ArrowRightIcon } from '@/components/Icons';
+import { MenuItem } from '@/types';
 
 const ProductDetails:React.FC<any> = () => {
   const {query, back} = useRouter();
   const {data, isLoading} = useFetchMenuItem(query?.slug)
 
-  const [product, setProduct] = useState<any>({})
+  const [product, setProduct] = useState<MenuItem>({})
   useEffect(()=>{
     if(data){
       setProduct(data)

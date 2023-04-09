@@ -61,20 +61,20 @@ const Footer = ({ className }: IProps) => {
         </div>
         <div className='flex justify-center gap-4 my-2' >
           {
-            owner.snapchat &&
-          <Image width="32" height="32" src="/icons/social-icons/twitter.png" alt="twitter"/>
-          }
-          {
-            owner.tiktok &&
-          <Image width="32" height="32" src="/icons/social-icons/twitter.png" alt="twitter"/>
-          }
-          {
             owner.twitter &&
           <Image width="32" height="32" src="/icons/social-icons/twitter.png" alt="twitter"/>
           }
           {
             owner.instagram &&
-          <Image width="32" height="32" src="/icons/social-icons/twitter.png" alt="twitter"/>
+            <Image width="32" height="32" src="/icons/social-icons/instagram.png" alt="twitter"/>
+          }
+          {
+            owner.snapchat &&
+          <Image width="32" height="32" src="/icons/social-icons/snapchat.png" alt="twitter"/>
+          }
+          {
+            owner.tiktok &&
+          <Image width="32" height="32" src="/icons/social-icons/tiktok.png" alt="twitter"/>
           }
         </div>
         <div className='py-4'>

@@ -3,12 +3,12 @@ import {  ShareIcon } from '@/components/Icons';
 import Input from '@/components/Input';
 import Loader from '@/components/Loader';
 import { cn } from '@/helpers/cn';
-import { IProduct } from '@/types';
+import { Addition, MenuItem, Option } from '@/types';
 import Image from 'next/image';
 import React from 'react';
 
 interface IProps {
-  product?: IProduct,
+  product?: MenuItem,
   isLoading?: boolean
 }
 const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
@@ -26,7 +26,7 @@ const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
               className="bg-center bg-cover"
               fill
               priority
-              src={product.image || "/banner.jpg"}
+              src={product?.image || "/banner.jpg"}
               alt="logo"
               objectPosition="center"
               objectFit='cover'
@@ -35,7 +35,7 @@ const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
           <div className="relative px-5 pt-10 ">
             <div className="flex justify-between py-5">
               <h2 className="mb-3 text-2xl font-semibold capitalize text-light">
-                {product.name}
+                {product?.name}
               </h2>
               <p className="text-xl text-primary">{product.price} SAR</p>
             </div>
@@ -45,10 +45,9 @@ const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
             </div>
             <div className={cn`mt-8 text-sm text-grey  ${product.calories === null ? 'opacity-0': ''}`}>Calories = {product.calories}</div>
             <div className='px-3 mt-10 border-t border-dark' >
-
-          {
-            product?.additions?.map((addition:any)=>(<Additions key={addition.id} {...addition} />))
-          }
+              {
+                product?.additions?.map((addition:Addition)=>(<Additions key={addition._id} {...addition} />))
+              }
             </div>
             <div className="px-2 pt-6 pb-16 border-b border-dark">
               <h3 className="mb-3 mr-2 font-semibold text-white text-md">Notes</h3>
@@ -72,24 +71,24 @@ const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
   );
 };
 
-const Additions:React.FC<any> = ({id, name, options}) => {
+const Additions:React.FC<Addition> = ({ name, options}) => {
   return <div className="px-2 pt-6 pb-6 ">
-          <h3 className="mb-3 mr-2 font-semibold text-white text-md">{name}</h3>
-          {
-            options?.map((option:any)=>(
-              
-            <div className='flex justify-between py-3 my-2 border-b border-dark hover:border-white' >
-              <div className='flex items-center' >
-                <Input type="checkbox"  />
-                <h3 className="mx-3 text-white text-md">{option.name}</h3>
-              </div>
-              <div>
-                <h3 className="font-semibold text-primary text-md">{option.price ? `+ ${option.price} SAR`:''}</h3>
-              </div>
-            </div>
-            ))
-          }
+    <h3 className="mb-3 mr-2 font-semibold text-white text-md">{name}</h3>
+    {
+      options?.map((option:Option)=>(
+        
+      <div className='flex justify-between py-3 my-2 border-b border-dark hover:border-white' >
+        <div className='flex items-center' >
+          <Input type="checkbox"  />
+          <h3 className="mx-3 text-white text-md">{option.name}</h3>
         </div>
+        <div>
+          <h3 className="font-semibold text-primary text-md">{option.price ? `+ ${option.price} SAR`:''}</h3>
+        </div>
+      </div>
+      ))
+    }
+  </div>
 }
 
 export default ProductDetailsContainer;

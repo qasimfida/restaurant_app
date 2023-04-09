@@ -1,5 +1,5 @@
 import { useFetchOwner } from '@/apis/owner';
-import { RestaurantContextType } from '@/types';
+import { MenuItem, Owner, RestaurantContextType } from '@/types';
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
 export const RestaurantContext = createContext<RestaurantContextType>({
@@ -11,8 +11,8 @@ export const RestaurantContext = createContext<RestaurantContextType>({
 export const useRestaurantContext = () => useContext(RestaurantContext);
 
 const Restaurant: React.FC<any> = ({ children }) => {
-  const [menus, setMenus] = useState<any>([]);
-  const [owner, setOwner] = useState<any>({});
+  const [menus, setMenus] = useState<MenuItem[]>([]);
+  const [owner, setOwner] = useState<Owner>({});
   
 //   Fetch owner
   const {data:ownerData,isLoading}= useFetchOwner();
