@@ -2,9 +2,10 @@ import { cn } from '@/helpers/cn';
 import Link from 'next/link';
 import React from 'react';
 import Image from '../Image';
+import { IProduct } from '@/types';
 
 interface IProps {
-  product?: any
+  product?: IProduct
   className: string;
 }
 

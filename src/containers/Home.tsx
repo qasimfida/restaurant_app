@@ -53,7 +53,6 @@ const HomeContainer = () => {
       setMenus(newArr)
      }
   },[data])
-
   const handleOpen = (current: number) => {
     const newArr = menus.map((item: IMenuProp, index:number)=>{
       if(index === current) {
@@ -78,9 +77,9 @@ const HomeContainer = () => {
             {menus.length > 0 && menus.map((menu: any, index: number) => (<Tab key={menu.id} active={menu.collapse} onClick={()=>handleOpen(index)} name={menu.name} />))}
           </div>
           <Carousel />
-          {!isLoading && error ? <div className='text-white'>Failed to load menu categories</div>: isLoading ? <div className='text-white'>Loading</div> : 
+          {!data && error ? <div className='text-white'>Failed to load menu categories</div>: !data ? <div className='text-white'>Loading</div> : 
           <>
-            {menus.length > 0 && menus.map((menu: any, index: number) => (
+            {menus.length > 0 && menus.map((menu: IMenuProp, index: number) => (
               <CollapseMenu menu={menu} active={menu.collapse} openIndex={menu.collapse} handleOpen={()=>handleOpen(index)} />
               ))}
             </>

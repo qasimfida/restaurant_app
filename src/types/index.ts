@@ -13,6 +13,7 @@ export interface IProduct {
     calories?: number | undefined,
     description?: string | undefined
     additions?: any
+    id?:number | string
   }
 export interface MenuItem {
     _id?: string;
@@ -31,24 +32,9 @@ export interface MenuItem {
     order?: number;
     calories?: number;
     image?: string;
-    waiterCode?: string;
     alergies?: string[];
-    suggestedItems?: string[];
-    hideFromMenu?: string[];
     soldOut?: boolean;
-    manageQuantity?: boolean;
-    canBuyWithStars?: boolean;
     additions?: Addition[];
-    sticker?: string;
-    stickerStyle?: string[];
-    active?: boolean;
-    deletedAt?: Date | null;
-    preparationTime?: number;
-    addedBy?: string;
-    quantities?: Quantity[];
-    createdAt?: Date;
-    updatedAt?: Date;
-    __v?: number;
   }
   
   export interface Addition {
@@ -64,11 +50,6 @@ export interface MenuItem {
     order?: number;
     taxEnabled?: boolean;
     active?: boolean;
-    deletedAt?: Date | null;
-    addedBy?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-    __v?: number;
   }
   
   export interface Option {
@@ -104,42 +85,7 @@ export interface MenuItem {
     whatsapp?: string;
     domain?: string;
     restaurant?: boolean;
-    crDoc?: string;
-    mancucpilityCertDoc?: string;
-    incorporationContractDoc?: string;
-    IbanCertDoc?: string | null;
-    IdDoc?: string | null;
-    deletedAt?: string | null;
     active?: boolean;
-    createdAt?: string;
-    updatedAt?: string;
-    __v?: number;
-    ibanCertDoc?: string;
-    idDoc?: string;
-    reservationFee?: number;
-    taxEnabled?: boolean;
-    taxEnabledOnReservationFee?: boolean;
-    taxEnabledOnTableFee?: boolean;
-    taxRate?: number;
-    defaultWorkingHours?: {
-      start?: string;
-      end?: string;
-    };
-    isDeliveryEnabled?: boolean;
-    isDeliveryToCarEnabled?: boolean;
-    isMenuBrowsingEnabled?: boolean;
-    isPickupOrderEnabled?: boolean;
-    isScheduledOrderEnabled?: boolean;
-    overrideWorkingHours?: {
-      day?: string;
-      start?: string;
-      end?: string;
-    }[];
-    isAppOrderEnabled?: boolean;
-    isReservationEnabled?: boolean;
-    isWaitingEnabled?: boolean;
-    alias?: string;
-    timezone?: string;
   }
 
   export interface MenuItem {
@@ -151,57 +97,14 @@ export interface MenuItem {
     active?: boolean;
     addedBy?: string;
     supplierId?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-    deletedAt?: Date | null;
   }
   
 
   export interface IRestaurant {
-    _id?: string;
     supplierId?: string;
     name?: string;
     nameAr?: string;
-    city?: string;
-    whatsappNumber?: string;
-    enableWhatsappCommunication?: boolean;
-    beforeConfirmOrderMessage?: {
-      ar?: string;
-      en?: string;
-    };
-    defaultWorkingHours?: {
-      start?: string;
-      end?: string;
-    };
-    overrideWorkingHours?: Array<unknown>;
-    isMenuBrowsingEnabled?: boolean;
-    isAppOrderEnabled?: boolean;
-    isDeliveryEnabled?: boolean;
-    isPickupOrderEnabled?: boolean;
-    isScheduledOrderEnabled?: boolean;
-    isDeliveryToCarEnabled?: boolean;
-    isReservationEnabled?: boolean;
-    isWaitingEnabled?: boolean;
-    minimumDeliveryOrderValue?: number;
-    location?: {
-      country?: string;
-      address?: string;
-      city?: string;
-      state?: string;
-      district?: string;
-      zipCode?: number;
-    };
     active?: boolean;
-    terms?: Array<{
-      type?: string;
-      termsAr?: string;
-      termsEn?: string;
-    }>;
-    deletedAt?: Date | null;
-    addedBy?: string;
-    createdAt?: Date;
-    updatedAt?: Date;
-    __v?: number;
     id?: string;
   }
   
