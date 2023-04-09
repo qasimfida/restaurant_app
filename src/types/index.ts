@@ -156,5 +156,54 @@ export interface MenuItem {
     deletedAt?: Date | null;
   }
   
+
+  export interface IRestaurant {
+    _id?: string;
+    supplierId?: string;
+    name?: string;
+    nameAr?: string;
+    city?: string;
+    whatsappNumber?: string;
+    enableWhatsappCommunication?: boolean;
+    beforeConfirmOrderMessage?: {
+      ar?: string;
+      en?: string;
+    };
+    defaultWorkingHours?: {
+      start?: string;
+      end?: string;
+    };
+    overrideWorkingHours?: Array<unknown>;
+    isMenuBrowsingEnabled?: boolean;
+    isAppOrderEnabled?: boolean;
+    isDeliveryEnabled?: boolean;
+    isPickupOrderEnabled?: boolean;
+    isScheduledOrderEnabled?: boolean;
+    isDeliveryToCarEnabled?: boolean;
+    isReservationEnabled?: boolean;
+    isWaitingEnabled?: boolean;
+    minimumDeliveryOrderValue?: number;
+    location?: {
+      country?: string;
+      address?: string;
+      city?: string;
+      state?: string;
+      district?: string;
+      zipCode?: number;
+    };
+    active?: boolean;
+    terms?: Array<{
+      type?: string;
+      termsAr?: string;
+      termsEn?: string;
+    }>;
+    deletedAt?: Date | null;
+    addedBy?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    __v?: number;
+    id?: string;
+  }
+  
   
   

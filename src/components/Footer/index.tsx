@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 interface IProps {
-  className: string;
+  className?: string;
 }
 
 const Footer = ({ className }: IProps) => {

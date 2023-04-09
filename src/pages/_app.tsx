@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next'
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { useFetchUser } from '@/apis/user';
 import Restaurant from '@/contexts/Restaurants';
 import { NextPage } from 'next';
 import { ReactElement,ReactNode } from 'react';

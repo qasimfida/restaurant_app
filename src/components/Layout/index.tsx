@@ -6,12 +6,13 @@ import Input from '../Input';
 import Button from '../Button';
 import { useFetchRestaurants } from '@/apis/restaurants';
 import { LocationIcon } from '../Icons';
+import { IRestaurant } from '@/types';
 
 const Layout:React.FC<any> = (props) => {
   const { data, error } = useFetchRestaurants();
-  const [restaurants, setRestaurants ] = useState<any>([]);
-  const [isOpen, setIsOpen] = useState<any>(false);
-  const [restaurant, setRestaurant] = useState<any>({});
+  const [restaurants, setRestaurants ] = useState<IRestaurant[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [restaurant, setRestaurant] = useState<IRestaurant>({});
   const toggleModal = () => setIsOpen(!isOpen);
   const toggleRestaurant = (index: number) =>{
     setRestaurant(restaurants[index]);
@@ -46,7 +47,7 @@ const Layout:React.FC<any> = (props) => {
             Choose the nearest branch
           </h3>
           <div className="gap-4 columns-1 sm:columns-2">
-            {restaurants?.length > 0 && restaurants.map((branch, index) => (
+            {restaurants?.length > 0 && restaurants.map((branch:IRestaurant, index) => (
               <Button
                 onClick={()=>toggleRestaurant(index)}
                 key={branch.id}
