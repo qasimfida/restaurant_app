@@ -25,7 +25,7 @@ const ProductCard = ({ product={}, className }: IProps) => {
         </div>
         <div className="shrink-0">
           <div className="relative w-24 h-24 overflow-hidden rounded-xl">
-            <Image className="rounded-lg" fill src={image || '/placeholders/product.png'} alt={name} />
+            <Image className="rounded-lg" fill src={image || '/placeholders/product.png'} alt={name || "product-cover"} />
           </div>
         </div>
       </div>
