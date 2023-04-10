@@ -5,14 +5,19 @@ import Loader from '@/components/Loader';
 import { cn } from '@/helpers/cn';
 import { Addition, MenuItem, Option } from '@/types';
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 interface IProps {
   product?: MenuItem,
   isLoading?: boolean
 }
 const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
-
+  const [quantity, setQuantity] = useState<number>(1);
+  const updateQuantity = (q:number) => {
+    if(quantity + q > 0 && quantity +q < 100){
+      setQuantity(quantity + q)
+    }
+  }
   return (
     <div className="relative h-auto min-h-screen sm:container sm:mx-auto bg-full-dark ">
       
@@ -56,15 +61,15 @@ const ProductDetailsContainer:React.FC<IProps> = ({product={}, isLoading}) => {
             <div className="flex items-center justify-between py-8 mb-10">
               <h3 className="mr-2 font-semibold text-white text-md">Quantity</h3>
               <div className='flex items-center ' >
-                <Button className='flex items-center justify-center w-12 h-12 bg-transparent border-2 !rounded-full border-primary !p-0' >-</Button>
-                <span className='text-center text-white w-14 ' >{1}</span>
-                <Button className='flex items-center justify-center w-12 h-12 bg-transparent border-2 !rounded-full border-primary !p-0' >+</Button>
+                <Button onClick={()=>updateQuantity(-1)} className='flex items-center justify-center w-12 h-12 bg-transparent border-2 !rounded-full border-primary !p-0' >-</Button>
+                <span className='text-center text-white w-14 ' >{quantity}</span>
+                <Button onClick={()=>updateQuantity(1)} className='flex items-center justify-center w-12 h-12 bg-transparent border-2 !rounded-full border-primary !p-0' >+</Button>
               </div>
             </div>
           </div>
         </div>
         <div className='flex items-center h-20' >
-          <Button variant='danger' icon={false} className='max-w-[400px] mx-auto !justify-center' >Add to basked</Button>
+          <Button variant='danger' icon={false} className='relative max-w-[400px] mx-auto !justify-center flex items-center' >Add to basked <span className='absolute text-xl right-4' >{product.price || 0 * quantity} SAR</span></Button>
         </div>
       </div>
     </div>
